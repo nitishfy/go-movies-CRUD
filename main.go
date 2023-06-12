@@ -13,8 +13,6 @@ import (
 )
 
 func main() {
-	//	create a new router
-	r := mux.NewRouter()
 
 	// We will display some Movies at the initial when user hits the endpoint /Movies
 	types.MoviesList = append(types.MoviesList, types.Movies{
@@ -36,7 +34,8 @@ func main() {
 			Lastname:  "Hills",
 		},
 	})
-
+	//	create a new router
+	r := mux.NewRouter()
 	r.HandleFunc("/movies", getMovies.GetMovies).Methods("GET")
 	r.HandleFunc("/movies/{id}", getMovie.GetMovieById).Methods("GET")
 	r.HandleFunc("/movies", createMovie.CreateMovie).Methods("POST")

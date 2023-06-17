@@ -7,6 +7,7 @@ import (
 	"github.com/nitishfy/go-movies-CRUD/pkg/handlers/deleteMovie"
 	"github.com/nitishfy/go-movies-CRUD/pkg/handlers/getMovie"
 	"github.com/nitishfy/go-movies-CRUD/pkg/handlers/getMovies"
+	"github.com/nitishfy/go-movies-CRUD/pkg/handlers/homePage"
 	"github.com/nitishfy/go-movies-CRUD/pkg/handlers/updateMovie"
 	"github.com/nitishfy/go-movies-CRUD/pkg/types"
 	"net/http"
@@ -36,6 +37,7 @@ func main() {
 	})
 	//	create a new router
 	r := mux.NewRouter()
+	r.HandleFunc("/",homePage.Home).Methods("GET")
 	r.HandleFunc("/movies", getMovies.GetMovies).Methods("GET")
 	r.HandleFunc("/movies/{id}", getMovie.GetMovieById).Methods("GET")
 	r.HandleFunc("/movies", createMovie.CreateMovie).Methods("POST")

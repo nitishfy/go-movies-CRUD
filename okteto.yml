@@ -1,0 +1,18 @@
+build:
+  crud-api:
+    context: .
+    image: nitishkumar06/go-movies
+    dockerfile: Dockerfile
+
+deploy:
+  - kubectl apply -f manifests/
+
+dev:
+  crud-api:
+    image: nitishkumar06/go-movies
+    sync:
+      - .:/app
+    workdir: /app
+    autocreate: true
+    forward:
+      - 8000:8000

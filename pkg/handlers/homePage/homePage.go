@@ -16,5 +16,5 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Fprintf(w, "Welcome!")
+	fmt.Fprintf(w, "Welcome to the home page!")
 }

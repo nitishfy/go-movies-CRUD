@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    tools {
+       go 'go-1.17'
+       git 
+    }
+
+    environment {
+        GO111MODULE = 'on'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                git 'https://github.com/nitishfy/go-movies-CRUD.git'
+                sh 'go build -o main .'
+            }
+        }
+    }
+
+}

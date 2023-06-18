@@ -37,7 +37,7 @@ func main() {
 	})
 	//	create a new router
 	r := mux.NewRouter()
-	r.HandleFunc("/",homePage.Home).Methods("GET")
+	r.HandleFunc("/", homePage.Home).Methods("GET")
 	r.HandleFunc("/movies", getMovies.GetMovies).Methods("GET")
 	r.HandleFunc("/movies/{id}", getMovie.GetMovieById).Methods("GET")
 	r.HandleFunc("/movies", createMovie.CreateMovie).Methods("POST")

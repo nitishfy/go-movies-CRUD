@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
         - name: movies-container
-          image: nitishkumar06/go-movies
+          image: nitishkumar06/go-movies:latest
           ports:
             - containerPort: 8000
+          imagePullPolicy: Always

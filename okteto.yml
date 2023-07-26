@@ -5,19 +5,20 @@ name: go-movies-CRUD
 build:
 
   # You can use the following env vars to refer to this image in your deploy commands:
-  #  - OKTETO_BUILD_CRUD_API_REGISTRY: image registry
-  #  - OKTETO_BUILD_CRUD_API_REPOSITORY: image repo
-  #  - OKTETO_BUILD_CRUD_API_IMAGE: image name
-  #  - OKTETO_BUILD_CRUD_API_SHA: image tag sha256
-  crud-api:
+  #  - OKTETO_BUILD_GO_MOVIES_CRUD_REGISTRY: image registry
+  #  - OKTETO_BUILD_GO_MOVIES_CRUD_REPOSITORY: image repo
+  #  - OKTETO_BUILD_GO_MOVIES_CRUD_IMAGE: image name
+  #  - OKTETO_BUILD_GO_MOVIES_CRUD_SHA: image tag sha256
+  go-movies-crud:
     context: .
     dockerfile: Dockerfile
-    image: nitishkumar06/go-movies
 
 # The deploy section defines how to deploy your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#deploy
 deploy:
-  - kubectl apply -f manifests/
+  remote: true
+  commands:
+  - kubectl apply -f manifests
 
 # The dependencies section defines other git repositories to be deployed as part of your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#dependencies
@@ -27,14 +28,4 @@ deploy:
 
 # The dev section defines how to activate a development container
 # More info: https://www.okteto.com/docs/reference/manifest/#dev
-dev:
-  crud-api:
-    image: nitishkumar06/go-movies:latest
-    command: sh
-    workdir: /app
-    sync:
-      - .:/app
-    forward:
-      - 8000:8000
-    autocreate: true
 
